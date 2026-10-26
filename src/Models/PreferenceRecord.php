@@ -4,17 +4,13 @@ declare(strict_types=1);
 
 namespace Liberu\CRM\ConsentAndPreferences\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Liberu\Foundation\Organizations\Models\Team;
+use App\Traits\IsTenantModel;
 use Illuminate\Database\Eloquent\Model;
 
 /** @property string $state */
 final class PreferenceRecord extends Model
 {
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class);
-    }
+    use IsTenantModel;
 
     protected $table = 'crm_preference_records';
 
